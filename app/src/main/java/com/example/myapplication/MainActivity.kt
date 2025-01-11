@@ -16,12 +16,13 @@ import com.example.myapplication.ui.theme.MyApplicationTheme
 /* welcome Sign Languagers
     This is our NEDC code. Make sure to do the following after your done editing the code OTHERWISE YOUR EDITS WONT SAVE:
 
-    1. On the top there is a tab "Git". Go to Git > New Branch. Enter your name so I know who made the change
+    1. On the top there is a tab "Git". Go to Git > New Branch. Enter your name so I know who made the change.
+       a. If there is a red outline and it says branch already exists, select "Overwrite existing branch"
     2. Next, do the following
        a. If your on windows: Ctrl + Alt + A
        b. If your on Mac: Command + Option + A
-    3. Go to Git > Commit. Select All your changes that you want to add. Make a commit message describing what you did.
-    4. Click on "Commit and Push". Let me know if any errors occur
+    3. Go to Git > Commit. Select All your changes that you want to add. Make a commit message in the textbox below that describing what you did.
+    4. Click on "Commit and Push".
  */
 
 class MainActivity : ComponentActivity() {
