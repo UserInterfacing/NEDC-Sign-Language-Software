@@ -18,7 +18,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Button // Import for Button
 
 /* welcome Sign Languagers
-    This is our NEDC code. Make sure to do the following after your done editing the code OTHERWISE YOUR EDITS WONT SAVE:
+    BEFORE YOU ADD ANYTHING TO THE CODE:
+        1. go to the top left right next to you project where it says "main" or the branch you made
+        2. Click on the right arrow next to main and click "Update"
+        This will make sure your code is up to date before making changes
+        3. Click on the right arrow next to main and click "Checkout" if you see it, otherwise ignore this step
+
+    WHEN YOU DONE WITH THE CODE, do this OTHERWISE YOUR EDITS WONT SAVE:
 
     1. On the top there is a tab "Git". Go to Git > New Branch. Enter your name so I know who made the change.
        a. If there is a red outline and it says branch already exists, select "Overwrite existing branch"
