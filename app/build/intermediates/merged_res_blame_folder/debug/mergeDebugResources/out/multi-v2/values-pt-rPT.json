@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.nedcsignlanguageproject.app-mergeDebugResources-42:/values-pt-rPT/values-pt-rPT.xml",
+            "outputFile": "com.example.myapplication.app-mergeDebugResources-43:/values-pt-rPT/values-pt-rPT.xml",
             "map": [
                 {
                     "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/3bdae484d8629b91b71d2a8e711d605e/transformed/material3-release/res/values-pt-rPT/values-pt-rPT.xml",
@@ -21,23 +21,6 @@
                     }
                 },
                 {
-                    "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/7f76b6ee10c363ab237345ec85acc133/transformed/core-1.12.0/res/values-pt-rPT/values-pt-rPT.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,152,254,353,453,560,666,787",
-                        "endColumns": "96,101,98,99,106,105,120,100",
-                        "endOffsets": "147,249,348,448,555,661,782,883"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,79",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,202,304,403,503,610,716,8330",
-                        "endColumns": "96,101,98,99,106,105,120,100",
-                        "endOffsets": "197,299,398,498,605,711,832,8426"
-                    }
-                },
-                {
                     "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/a575f2fdfb28ee7d8146806f00191903/transformed/foundation-release/res/values-pt-rPT/values-pt-rPT.xml",
                     "from": {
                         "startLines": "2,3",
@@ -52,6 +35,23 @@
                         "startOffsets": "8701,8788",
                         "endColumns": "86,88",
                         "endOffsets": "8783,8872"
+                    }
+                },
+                {
+                    "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/f98ee3d67031989130b5c72a257577d6/transformed/core-1.15.0/res/values-pt-rPT/values-pt-rPT.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,152,254,353,453,560,666,787",
+                        "endColumns": "96,101,98,99,106,105,120,100",
+                        "endOffsets": "147,249,348,448,555,661,782,883"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,79",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,202,304,403,503,610,716,8330",
+                        "endColumns": "96,101,98,99,106,105,120,100",
+                        "endOffsets": "197,299,398,498,605,711,832,8426"
                     }
                 },
                 {
