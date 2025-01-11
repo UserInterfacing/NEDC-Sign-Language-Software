@@ -1,1 +1,1 @@
-# NEDC-Sign-Language-Software from Atholton High School to make a sign language glove to solve the problem of inequality
+# NEDC-Sign-Language-Software for Atholton High School to make a sign language glove to solve the problem of inequality
