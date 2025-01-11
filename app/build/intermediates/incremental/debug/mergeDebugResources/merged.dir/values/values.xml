@@ -30,7 +30,7 @@
     <dimen name="notification_main_column_padding_top">10dp</dimen>
     <dimen name="notification_media_narrow_margin">@dimen/notification_content_margin_start</dimen>
     <dimen name="notification_right_icon_size">16dp</dimen>
-    <dimen name="notification_right_side_padding_top">2dp</dimen>
+    <dimen name="notification_right_side_padding_top">4dp</dimen>
     <dimen name="notification_small_icon_background_padding">3dp</dimen>
     <dimen name="notification_small_icon_size_as_large">24dp</dimen>
     <dimen name="notification_subtext_size">13sp</dimen>
@@ -104,7 +104,7 @@
     <item name="wrapped_composition_tag" type="id"/>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="androidx_startup" translatable="false">androidx.startup</string>
-    <string name="app_name">NEDC Sign Language Project</string>
+    <string name="app_name">My Application</string>
     <string name="call_notification_answer_action">Answer</string>
     <string name="call_notification_answer_video_action">Video</string>
     <string name="call_notification_decline_action">Decline</string>
@@ -213,7 +213,7 @@
         <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
     <style name="TextAppearance.Compat.Notification.Title" parent="@android:style/TextAppearance.StatusBar.EventContent.Title"/>
-    <style name="Theme.NEDCSignLanguageProject" parent="android:Theme.Material.Light.NoActionBar"/>
+    <style name="Theme.MyApplication" parent="android:Theme.Material.Light.NoActionBar"/>
     <style name="Widget.Compat.NotificationActionContainer" parent=""/>
     <style name="Widget.Compat.NotificationActionText" parent=""/>
     <declare-styleable name="Capability">
@@ -240,6 +240,8 @@
         
         <attr format="string" name="fontProviderQuery"/>
         
+        <attr format="string" name="fontProviderFallbackQuery"/>
+        
         <attr format="reference" name="fontProviderCerts"/>
         
         <attr name="fontProviderFetchStrategy">
@@ -250,7 +252,7 @@
               default typeface will be used instead. -->
             <enum name="blocking" value="0"/>
             <!-- The async font fetch works as follows.
-              First, check the local cache, then if the requeted font is not cached, trigger a
+              First, check the local cache, then if the requested font is not cached, trigger a
               request the font and continue with layout inflation. Once the font fetch succeeds, the
               target text view will be refreshed with the downloaded font data. The
               fontProviderFetchTimeout will be ignored if async loading is specified. -->
