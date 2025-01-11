@@ -38,7 +38,7 @@ import androidx.compose.material3.Button // Import for Button
 /* Vivaswan is my goat
 */
 
-//please please
+//pls
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
