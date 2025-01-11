@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.nedcsignlanguageproject.app-mergeDebugResources-42:/values-pl/values-pl.xml",
+            "outputFile": "com.example.myapplication.app-mergeDebugResources-43:/values-pl/values-pl.xml",
             "map": [
-                {
-                    "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/7f76b6ee10c363ab237345ec85acc133/transformed/core-1.12.0/res/values-pl/values-pl.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,152,254,352,451,565,670,792",
-                        "endColumns": "96,101,97,98,113,104,121,100",
-                        "endOffsets": "147,249,347,446,560,665,787,888"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,79",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,202,304,402,501,615,720,8186",
-                        "endColumns": "96,101,97,98,113,104,121,100",
-                        "endOffsets": "197,299,397,496,610,715,837,8282"
-                    }
-                },
                 {
                     "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/3bdae484d8629b91b71d2a8e711d605e/transformed/material3-release/res/values-pl/values-pl.xml",
                     "from": {
@@ -69,6 +52,23 @@
                         "startOffsets": "842,937,1022,1131,1236,1313,1390,7630,7720,7803,7874,7944,8027,8114,8287,8369,8437",
                         "endColumns": "94,84,108,104,76,76,92,89,82,70,69,82,86,71,81,67,119",
                         "endOffsets": "932,1017,1126,1231,1308,1385,1478,7715,7798,7869,7939,8022,8109,8181,8364,8432,8552"
+                    }
+                },
+                {
+                    "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/f98ee3d67031989130b5c72a257577d6/transformed/core-1.15.0/res/values-pl/values-pl.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,152,254,352,451,565,670,792",
+                        "endColumns": "96,101,97,98,113,104,121,100",
+                        "endOffsets": "147,249,347,446,560,665,787,888"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,79",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,202,304,402,501,615,720,8186",
+                        "endColumns": "96,101,97,98,113,104,121,100",
+                        "endOffsets": "197,299,397,496,610,715,837,8282"
                     }
                 }
             ]

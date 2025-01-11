@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.nedcsignlanguageproject.app-mergeDebugResources-42:/values-el/values-el.xml",
+            "outputFile": "com.example.myapplication.app-mergeDebugResources-43:/values-el/values-el.xml",
             "map": [
                 {
                     "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/3bdae484d8629b91b71d2a8e711d605e/transformed/material3-release/res/values-el/values-el.xml",
@@ -38,6 +38,23 @@
                     }
                 },
                 {
+                    "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/f98ee3d67031989130b5c72a257577d6/transformed/core-1.15.0/res/values-el/values-el.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,256,356,459,567,673,790",
+                        "endColumns": "97,102,99,102,107,105,116,100",
+                        "endOffsets": "148,251,351,454,562,668,785,886"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,79",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,203,306,406,509,617,723,8407",
+                        "endColumns": "97,102,99,102,107,105,116,100",
+                        "endOffsets": "198,301,401,504,612,718,835,8503"
+                    }
+                },
+                {
                     "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/a575f2fdfb28ee7d8146806f00191903/transformed/foundation-release/res/values-el/values-el.xml",
                     "from": {
                         "startLines": "2,3",
@@ -52,23 +69,6 @@
                         "startOffsets": "8780,8878",
                         "endColumns": "97,101",
                         "endOffsets": "8873,8975"
-                    }
-                },
-                {
-                    "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/7f76b6ee10c363ab237345ec85acc133/transformed/core-1.12.0/res/values-el/values-el.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,153,256,356,459,567,673,790",
-                        "endColumns": "97,102,99,102,107,105,116,100",
-                        "endOffsets": "148,251,351,454,562,668,785,886"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,79",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,203,306,406,509,617,723,8407",
-                        "endColumns": "97,102,99,102,107,105,116,100",
-                        "endOffsets": "198,301,401,504,612,718,835,8503"
                     }
                 }
             ]

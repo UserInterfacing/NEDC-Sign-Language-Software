@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.nedcsignlanguageproject.app-mergeDebugResources-42:/values-iw/values-iw.xml",
+            "outputFile": "com.example.myapplication.app-mergeDebugResources-43:/values-iw/values-iw.xml",
             "map": [
+                {
+                    "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/f98ee3d67031989130b5c72a257577d6/transformed/core-1.15.0/res/values-iw/values-iw.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,149,251,348,445,546,646,752",
+                        "endColumns": "93,101,96,96,100,99,105,100",
+                        "endOffsets": "144,246,343,440,541,641,747,848"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,79",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,199,301,398,495,596,696,7913",
+                        "endColumns": "93,101,96,96,100,99,105,100",
+                        "endOffsets": "194,296,393,490,591,691,797,8009"
+                    }
+                },
                 {
                     "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/a575f2fdfb28ee7d8146806f00191903/transformed/foundation-release/res/values-iw/values-iw.xml",
                     "from": {
@@ -52,23 +69,6 @@
                         "startOffsets": "802,891,975,1068,1163,1246,1323,7387,7473,7552,7618,7684,7762,7844,8014,8088,8159",
                         "endColumns": "88,83,92,94,82,76,84,85,78,65,65,77,81,68,73,70,118",
                         "endOffsets": "886,970,1063,1158,1241,1318,1403,7468,7547,7613,7679,7757,7839,7908,8083,8154,8273"
-                    }
-                },
-                {
-                    "source": "/Users/vivaswancomputer/.gradle/caches/8.10.2/transforms/7f76b6ee10c363ab237345ec85acc133/transformed/core-1.12.0/res/values-iw/values-iw.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,149,251,348,445,546,646,752",
-                        "endColumns": "93,101,96,96,100,99,105,100",
-                        "endOffsets": "144,246,343,440,541,641,747,848"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,79",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,199,301,398,495,596,696,7913",
-                        "endColumns": "93,101,96,96,100,99,105,100",
-                        "endOffsets": "194,296,393,490,591,691,797,8009"
                     }
                 }
             ]

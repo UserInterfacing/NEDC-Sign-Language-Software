@@ -6,12 +6,16 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material3.Text // Import for Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myapplication.ui.theme.MyApplicationTheme
+import androidx.compose.ui.unit.dp
+import androidx.compose.material3.Button // Import for Button
 
 /* welcome Sign Languagers
     This is our NEDC code. Make sure to do the following after your done editing the code OTHERWISE YOUR EDITS WONT SAVE:
@@ -48,6 +52,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         text = "Hello $name!",
         modifier = modifier
     )
+    Spacer(modifier = Modifier.height(16.dp))
+    Button(onClick = { /* Handle button click here */ }) {
+        Text(text = "Play game")
+    }
 }
 
 @Preview(showBackground = true)
