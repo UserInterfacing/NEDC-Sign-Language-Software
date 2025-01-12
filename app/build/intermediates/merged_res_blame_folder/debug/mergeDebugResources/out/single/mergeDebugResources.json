@@ -1,5 +1,9 @@
 [
     {
+        "merged": "com.example.myapplication.app-debug-45:/drawable_settings_icon.png.flat",
+        "source": "com.example.myapplication.app-main-47:/drawable/settings_icon.png"
+    },
+    {
         "merged": "com.example.myapplication.app-debug-45:/mipmap-anydpi_ic_launcher.xml.flat",
         "source": "com.example.myapplication.app-main-47:/mipmap-anydpi/ic_launcher.xml"
     },
@@ -62,6 +66,10 @@
     {
         "merged": "com.example.myapplication.app-debug-45:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "com.example.myapplication.app-main-47:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-45:/drawable_stats_icon.png.flat",
+        "source": "com.example.myapplication.app-main-47:/drawable/stats_icon.png"
     },
     {
         "merged": "com.example.myapplication.app-debug-45:/xml_backup_rules.xml.flat",

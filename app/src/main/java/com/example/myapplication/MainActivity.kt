@@ -15,6 +15,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.Image
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -109,6 +111,29 @@ fun MyApp(modifier: Modifier = Modifier) {
         Button(onClick = { /* Handle button click here */ }) {
             Text(text = "Play game")
         }
+
+        Spacer(modifier = Modifier.height(20.dp)) // Add Image Button
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(onClick = {/* Handle image button click here */ }) {
+                Image(
+                    painter = painterResource(id = R.drawable.stats_icon),
+                    contentDescription = "StatsButton"
+                )
+            }
+
+            IconButton(onClick = {/* Handle image button click here */ }) {
+                Image(
+                    painter = painterResource(id = R.drawable.settings_icon),
+                    contentDescription = "SettingsButton"
+                )
+            }
+        }
+
     }
 }
 
