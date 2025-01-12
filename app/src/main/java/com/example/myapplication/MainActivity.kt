@@ -1,43 +1,42 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.TextStyle
-import com.example.myapplication.ui.theme.MyApplicationTheme
-// Colors
-import androidx.compose.ui.graphics.Color
-import androidx.compose.foundation.*
-// Fonts
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import com.example.myapplication.ui.theme.MyApplicationTheme
 
 /* welcome Sign Languagers
     BEFORE YOU ADD ANYTHING TO THE CODE:
-        1. go to the top left right next to you project where it says "main" or the branch you made
-        2. Click on the right arrow next to main and click "Update"
-        This will make sure your code is up to date before making changes
-        3. Click on the right arrow next to main and click "Checkout" if you see it, otherwise ignore this step
+
+    1. go to the top left right next to you project where it says "main" or the branch you made
+    2. Click on the right arrow next to main and click "Update" This will make sure your code is up to date before making changes
+    3. Click on the right arrow next to main and click "Checkout" if you see it, otherwise ignore this step
 
     WHEN YOU DONE WITH THE CODE, do this OTHERWISE YOUR EDITS WONT SAVE:
-
     1. On the top there is a tab "Git" at the same place as "File" and "View". Go to Git > New Branch. Enter your name so I know who made the change.
-       a. If there is a red outline and it says branch already exists, select "Overwrite existing branch" and also check the "Checkout Branch"
+        a. If there is a red outline and it says branch already exists, select "Overwrite existing branch"
     2. Next, do the following
-       a. If your on windows: Ctrl + Alt + A
-       b. If your on Mac: Command + Option + A
+        a. If your on windows: Ctrl + Alt + A
+        b. If your on Mac: Command + Option + A
     3. Go to Git > Commit. Select All your changes that you want to add. Make a commit message in the textbox below that describing what you did.
     4. Click on "Commit and Push".
- */
+*/
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,10 +45,26 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyApp(modifier = Modifier.padding(innerPadding))
+                    val isBluetoothEnabled = remember { mutableStateOf(BluetoothManager.isBluetoothEnabled(this)) }
+
+                    if (isBluetoothEnabled.value) {
+                        MyApp(modifier = Modifier.padding(innerPadding))
+                    } else {
+                        ConnectToBluetoothScreen {
+                            isBluetoothEnabled.value = BluetoothManager.isBluetoothEnabled(this)
+                        }
+                    }
                 }
             }
         }
+    }
+}
+
+object BluetoothManager {
+    fun isBluetoothEnabled(context: Context): Boolean {
+        val bluetoothManager = context.getSystemService(Context.BLUETOOTH_SERVICE) as android.bluetooth.BluetoothManager
+        val bluetoothAdapter = bluetoothManager.adapter
+        return bluetoothAdapter?.isEnabled == true
     }
 }
 
@@ -63,35 +78,33 @@ fun MyApp(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Team Name", //Title
-            fontSize = 50.sp, //Size of the text
+            text = "Team Name",
+            fontSize = 50.sp,
             style = TextStyle(
-                fontFamily = FontFamily( //setting the font of the text.
+                fontFamily = FontFamily(
                     Font(R.font.lobster, FontWeight.Normal)
-                    /* You can import a font by going to res/font and placing your font there.
-                    It can only be lowercase letters */
                 ),
-                color = Color.Blue // color of text
+                color = Color.Blue
             ),
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
 
-        Spacer(modifier = Modifier.height(50.dp)) // Add some space
+        Spacer(modifier = Modifier.height(50.dp))
 
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(400.dp)
-                .border(2.dp, Color.Black) // Set the border color and width
+                .border(2.dp, Color.Gray)
                 .background(Color.LightGray)
         ) {
             Text(
-                text = "TRANSLATION",
+                text = "Translate",
                 modifier = Modifier.align(Alignment.TopCenter)
             )
         }
 
-        Spacer(modifier = Modifier.height(50.dp)) // Add some space
+        Spacer(modifier = Modifier.height(50.dp))
 
         Button(onClick = { /* Handle button click here */ }) {
             Text(text = "Play game")
