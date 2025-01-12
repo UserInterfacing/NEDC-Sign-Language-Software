@@ -15,12 +15,16 @@ import androidx.compose.ui.unit.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.example.myapplication.ui.theme.MyApplicationTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
 /* welcome Sign Languagers
     BEFORE YOU ADD ANYTHING TO THE CODE:
@@ -45,6 +49,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyApplicationTheme {
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     val isBluetoothEnabled = remember { mutableStateOf(BluetoothManager.isBluetoothEnabled(this)) }
 
@@ -71,6 +76,11 @@ object BluetoothManager {
 
 @Composable
 fun MyApp(modifier: Modifier = Modifier) {
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "home") {
+        composable("home") { MainActivity() }
+        composable("stats") { StatsScreen() }
+    }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -126,34 +136,44 @@ fun MyApp(modifier: Modifier = Modifier) {
                 color = Color.Black
             )
         }
-        BottomAppBar(
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ){
-                IconButton(
-                    onClick = { /* Do something when book button is clicked */ }
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.settings_icon),
-                        contentDescription = "Book" )
-                }
-                IconButton(
-                    onClick = { /* Do something when stats button is clicked */ }
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.stats_icon),
-                        contentDescription = "Stats" )
-                }
-                IconButton(
-                    onClick = { /* Do something when settings button is clicked */ }
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.settings_icon),
-                        contentDescription = "Settings"
-                    )
+
+        Box {
+            HorizontalDivider(
+                color = Color.Black,
+                thickness = 2.dp, // Thickness of the top border
+                modifier = Modifier.fillMaxWidth()
+            )
+            BottomAppBar(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.Transparent),
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ){
+                    IconButton(
+                        onClick = { /* Do something when book button is clicked */ }
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.settings_icon),
+                            contentDescription = "Book" )
+                    }
+                    IconButton(
+                        onClick = { navController.navigate("stats") }
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.stats_icon),
+                            contentDescription = "Stats" )
+                    }
+                    IconButton(
+                        onClick = { /* Do something when settings button is clicked */ }
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.settings_icon),
+                            contentDescription = "Settings"
+                        )
+                    }
                 }
             }
         }
