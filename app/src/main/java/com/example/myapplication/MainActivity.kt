@@ -10,9 +10,16 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.TextStyle
 import com.example.myapplication.ui.theme.MyApplicationTheme
+// Colors
+import androidx.compose.ui.graphics.Color
+// Fonts
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 
 /* welcome Sign Languagers
     BEFORE YOU ADD ANYTHING TO THE CODE:
@@ -56,8 +63,16 @@ fun MyApp(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Team Name",
-            //fontsize = 24.sp,
+            text = "Team Name", //Title
+            fontSize = 50.sp, //Size of the text
+            style = TextStyle(
+                fontFamily = FontFamily( //setting the font of the text.
+                    Font(R.font.lobster, FontWeight.Normal)
+                    /* You can import a font by going to res/font and placing your font there.
+                    It can only be lowercase letters */
+                ),
+                color = Color.Blue // color of text
+            ),
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
 
