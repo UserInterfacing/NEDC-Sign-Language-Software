@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -17,6 +15,7 @@ import androidx.compose.ui.unit.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -91,49 +90,73 @@ fun MyApp(modifier: Modifier = Modifier) {
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
 
-        Spacer(modifier = Modifier.height(50.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Button(
+                onClick = {},
+                modifier = Modifier.size(200.dp, 60.dp),
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Text(
+                    text = "TRANSLATOR"
+                )
+            }
 
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(400.dp)
-                .border(2.dp, Color.Gray)
-                .background(Color.LightGray)
+            Button(
+                onClick = {},
+                modifier = Modifier.size(200.dp, 60.dp),
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Text(
+                    text = "REVIEW"
+                )
+            }
+        }
+
+        Button(
+            onClick = {},
+            modifier = Modifier.size(400.dp, 100.dp),
+            shape = RoundedCornerShape(8.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF006400))
         ) {
             Text(
-                text = "Translate",
-                modifier = Modifier.align(Alignment.TopCenter)
+                text = "LEARN",
+                fontSize = 30.sp,
+                color = Color.Black
             )
         }
-
-        Spacer(modifier = Modifier.height(50.dp))
-
-        Button(onClick = { /* Handle button click here */ }) {
-            Text(text = "Play game")
-        }
-
-        Spacer(modifier = Modifier.height(20.dp)) // Add Image Button
-
-        Row(
+        BottomAppBar(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(onClick = {/* Handle image button click here */ }) {
-                Image(
-                    painter = painterResource(id = R.drawable.stats_icon),
-                    contentDescription = "StatsButton"
-                )
-            }
-
-            IconButton(onClick = {/* Handle image button click here */ }) {
-                Image(
-                    painter = painterResource(id = R.drawable.settings_icon),
-                    contentDescription = "SettingsButton"
-                )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ){
+                IconButton(
+                    onClick = { /* Do something when book button is clicked */ }
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.settings_icon),
+                        contentDescription = "Book" )
+                }
+                IconButton(
+                    onClick = { /* Do something when stats button is clicked */ }
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.stats_icon),
+                        contentDescription = "Stats" )
+                }
+                IconButton(
+                    onClick = { /* Do something when settings button is clicked */ }
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.settings_icon),
+                        contentDescription = "Settings"
+                    )
+                }
             }
         }
-
     }
 }
 
