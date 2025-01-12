@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import androidx.compose.ui.Alignment
@@ -16,6 +15,7 @@ import androidx.compose.ui.text.TextStyle
 import com.example.myapplication.ui.theme.MyApplicationTheme
 // Colors
 import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.*
 // Fonts
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -31,7 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
     WHEN YOU DONE WITH THE CODE, do this OTHERWISE YOUR EDITS WONT SAVE:
 
     1. On the top there is a tab "Git" at the same place as "File" and "View". Go to Git > New Branch. Enter your name so I know who made the change.
-       a. If there is a red outline and it says branch already exists, select "Overwrite existing branch"
+       a. If there is a red outline and it says branch already exists, select "Overwrite existing branch" and also check the "Checkout Branch"
     2. Next, do the following
        a. If your on windows: Ctrl + Alt + A
        b. If your on Mac: Command + Option + A
@@ -78,13 +78,18 @@ fun MyApp(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(50.dp)) // Add some space
 
-        var textState = remember { TextFieldValue() }
-        TextField(
-            value = textState,
-            onValueChange = { textState = it },
-            label = { Text("Enter text") },
-            modifier = Modifier.fillMaxWidth()
-        )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(400.dp)
+                .border(2.dp, Color.Black) // Set the border color and width
+                .background(Color.LightGray)
+        ) {
+            Text(
+                text = "TRANSLATION",
+                modifier = Modifier.align(Alignment.TopCenter)
+            )
+        }
 
         Spacer(modifier = Modifier.height(50.dp)) // Add some space
 
