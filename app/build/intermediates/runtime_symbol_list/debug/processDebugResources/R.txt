@@ -74,6 +74,8 @@ int drawable notification_template_icon_bg 0x7f040012
 int drawable notification_template_icon_low_bg 0x7f040013
 int drawable notification_tile_bg 0x7f040014
 int drawable notify_panel_notification_icon_bg 0x7f040015
+int drawable settings_icon 0x7f040016
+int drawable stats_icon 0x7f040017
 int font lobster 0x7f0d0000
 int id accessibility_action_clickable_span 0x7f050000
 int id accessibility_custom_action_0 0x7f050001
