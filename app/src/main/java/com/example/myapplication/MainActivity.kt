@@ -80,6 +80,8 @@ fun MyApp(modifier: Modifier = Modifier) {
     NavHost(navController = navController, startDestination = "home") {
         composable("home") { MainActivity() }
         composable("stats") { StatsScreen() }
+        composable("settings") { SettingsScreen() }
+        //composable("game") { GameScreen() }
     }
     Column(
         modifier = modifier
@@ -153,10 +155,10 @@ fun MyApp(modifier: Modifier = Modifier) {
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ){
                     IconButton(
-                        onClick = { /* Do something when book button is clicked */ }
+                        onClick = { /* Do something when book button is clicked */ },
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.settings_icon),
+                            painter = painterResource(id = R.drawable.book),
                             contentDescription = "Book" )
                     }
                     IconButton(
