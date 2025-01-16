@@ -82,5 +82,6 @@ fun MyApp(modifier: Modifier = Modifier) {
         composable("home") { HomeScreen(navController) }
         composable("stats") { StatsScreen(navController) }
         composable("settings") { SettingsScreen(navController) }
+        composable("game") { GameActivity(navController) }
     }
 }
