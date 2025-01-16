@@ -155,7 +155,7 @@ fun MyApp(modifier: Modifier = Modifier) {
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ){
                     IconButton(
-                        onClick = { /* Do something when book button is clicked */ },
+                        onClick = { navController.navigate("home") },
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.book),
@@ -169,7 +169,7 @@ fun MyApp(modifier: Modifier = Modifier) {
                             contentDescription = "Stats" )
                     }
                     IconButton(
-                        onClick = { /* Do something when settings button is clicked */ }
+                        onClick = { navController.navigate("settings") }
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.settings_icon),
