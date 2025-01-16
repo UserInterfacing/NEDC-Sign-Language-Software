@@ -20,6 +20,10 @@
         "source": "com.example.myapplication.app-main-55:/drawable/book.png"
     },
     {
+        "merged": "com.example.myapplication.app-debug-53:/font_nexa.ttf.flat",
+        "source": "com.example.myapplication.app-main-55:/font/nexa.ttf"
+    },
+    {
         "merged": "com.example.myapplication.app-debug-53:/mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "com.example.myapplication.app-main-55:/mipmap-xxhdpi/ic_launcher.webp"
     },

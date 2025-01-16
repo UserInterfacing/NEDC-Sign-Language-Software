@@ -39,11 +39,11 @@ fun HomeScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Team Name",
+            text = "Atholton",
             fontSize = 50.sp,
             style = TextStyle(
                 fontFamily = FontFamily(
-                    Font(R.font.lobster, FontWeight.Normal)
+                    Font(R.font.nexa, FontWeight.Normal)
                 ),
                 color = Color.Blue
             ),
@@ -71,7 +71,7 @@ fun HomeScreen(navController: NavController) {
         }
 
         Button(
-            onClick = {},
+            onClick = {navController.navigate("game")},
             modifier = Modifier.size(400.dp, 100.dp),
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF006400))

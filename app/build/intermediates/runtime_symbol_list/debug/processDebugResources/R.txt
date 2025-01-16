@@ -100,6 +100,7 @@ int drawable notify_panel_notification_icon_bg 0x7f040016
 int drawable settings_icon 0x7f040017
 int drawable stats_icon 0x7f040018
 int font lobster 0x7f050000
+int font nexa 0x7f050001
 int id accessibility_action_clickable_span 0x7f060000
 int id accessibility_custom_action_0 0x7f060001
 int id accessibility_custom_action_1 0x7f060002
