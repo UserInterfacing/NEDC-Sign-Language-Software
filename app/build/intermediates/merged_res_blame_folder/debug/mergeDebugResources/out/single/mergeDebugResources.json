@@ -92,6 +92,10 @@
         "source": "com.example.myapplication.app-main-55:/drawable/ic_launcher_background.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-53:/font_excelsiorsans.ttf.flat",
+        "source": "com.example.myapplication.app-main-55:/font/excelsiorsans.ttf"
+    },
+    {
         "merged": "com.example.myapplication.app-debug-53:/mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "com.example.myapplication.app-main-55:/mipmap-xxxhdpi/ic_launcher.webp"
     }
