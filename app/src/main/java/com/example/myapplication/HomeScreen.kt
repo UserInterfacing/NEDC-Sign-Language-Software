@@ -39,32 +39,37 @@ fun HomeScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Atholton",
+            text = "NEDC Sign Language Glove",
             fontSize = 50.sp,
             style = TextStyle(
                 fontFamily = FontFamily(
-                    Font(R.font.nexa, FontWeight.Normal)
+                    Font(R.font.excelsiorsans, FontWeight.Normal)
                 ),
-                color = Color.Blue
+                color = Color.Black
             ),
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
 
         Row(
             modifier = Modifier.fillMaxWidth()
+
+                .padding(16.dp),
         ) {
             Button(
                 onClick = {},
-                modifier = Modifier.size(200.dp, 60.dp),
-                shape = RoundedCornerShape(8.dp)
+                modifier = Modifier.size(160.dp, 60.dp),
+
+
+                shape = RoundedCornerShape(5.dp)
             ) {
                 Text(text = "TRANSLATOR")
             }
 
             Button(
                 onClick = {},
-                modifier = Modifier.size(200.dp, 60.dp),
-                shape = RoundedCornerShape(8.dp)
+                modifier = Modifier.size(160.dp, 60.dp),
+                shape = RoundedCornerShape(5.dp)
+
             ) {
                 Text(text = "REVIEW")
             }

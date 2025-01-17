@@ -12,6 +12,7 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable settings_icon
 drawable stats_icon
+font excelsiorsans
 font lobster
 font nexa
 id level10_button
