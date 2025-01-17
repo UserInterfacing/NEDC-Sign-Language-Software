@@ -9,22 +9,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.res.painterResource
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.myapplication.levels.*
 
 /* welcome Sign Languagers
     BEFORE YOU ADD ANYTHING TO THE CODE:
@@ -51,7 +40,7 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val isBluetoothEnabled = remember { mutableStateOf(BluetoothManager.isBluetoothEnabled(this)) }
+                    /*val isBluetoothEnabled = remember { mutableStateOf(BluetoothManager.isBluetoothEnabled(this)) }
 
                     if (isBluetoothEnabled.value) {
                         MyApp(modifier = Modifier.padding(innerPadding))
@@ -59,7 +48,9 @@ class MainActivity : ComponentActivity() {
                         ConnectToBluetoothScreen {
                             isBluetoothEnabled.value = BluetoothManager.isBluetoothEnabled(this)
                         }
-                    }
+                    }*/
+
+                    MyApp(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -83,5 +74,8 @@ fun MyApp(modifier: Modifier = Modifier) {
         composable("stats") { StatsScreen(navController) }
         composable("settings") { SettingsScreen(navController) }
         composable("game") { GameActivity(navController) }
+
+        //levels
+        composable("level1") { LevelOne(navController) }
     }
 }

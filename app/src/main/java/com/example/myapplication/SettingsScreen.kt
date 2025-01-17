@@ -21,47 +21,40 @@ import androidx.navigation.NavController
 fun SettingsScreen(navController: NavController) {
     Text(text = "This is the Settings Page")
 
-    Box {
-        HorizontalDivider(
-            color = Color.Black,
-            thickness = 2.dp,
-            modifier = Modifier.fillMaxWidth()
-        )
-        BottomAppBar(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Color.Transparent),
+    BottomAppBar(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.Transparent),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
+            IconButton(
+                onClick = {
+                    navController.navigate("home")
+                },
             ) {
-                IconButton(
-                    onClick = {
-                        navController.navigate("home")
-                    },
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.book),
-                        contentDescription = "Book"
-                    )
-                }
-                IconButton(
-                    onClick = { navController.navigate("stats") }
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.stats_icon),
-                        contentDescription = "Stats"
-                    )
-                }
-                IconButton(
-                    onClick = { navController.navigate("settings") }
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.settings_icon),
-                        contentDescription = "Settings"
-                    )
-                }
+                Image(
+                    painter = painterResource(id = R.drawable.book),
+                    contentDescription = "Book"
+                )
+            }
+            IconButton(
+                onClick = { navController.navigate("stats") }
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.stats_icon),
+                    contentDescription = "Stats"
+                )
+            }
+            IconButton(
+                onClick = { navController.navigate("settings") }
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.settings_icon),
+                    contentDescription = "Settings"
+                )
             }
         }
     }

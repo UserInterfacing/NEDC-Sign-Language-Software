@@ -1,31 +1,15 @@
 package com.example.myapplication
 
-import android.content.Context
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
-import com.example.myapplication.ui.theme.MyApplicationTheme
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
+import com.example.myapplication.levels.LevelOne
 
 @Composable
 fun GameActivity(navController: NavController) {
@@ -35,7 +19,7 @@ fun GameActivity(navController: NavController) {
             horizontalArrangement = Arrangement.Center
             ) {
             Button(
-                onClick = { LevelOne() }
+                onClick = { navController.navigate("level1") }
             ) {
                 Text(
                     text = "Level 1"
@@ -110,8 +94,4 @@ fun GameActivity(navController: NavController) {
             }
         }
     }
-}
-
-fun LevelOne() {
-
 }
