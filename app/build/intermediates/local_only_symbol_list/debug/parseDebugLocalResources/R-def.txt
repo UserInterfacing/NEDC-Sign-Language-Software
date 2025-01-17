@@ -7,6 +7,8 @@ color purple_700
 color teal_200
 color teal_700
 color white
+drawable a
+drawable b
 drawable book
 drawable ic_launcher_background
 drawable ic_launcher_foreground

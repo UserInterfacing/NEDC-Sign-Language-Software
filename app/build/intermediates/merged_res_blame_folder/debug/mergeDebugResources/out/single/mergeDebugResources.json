@@ -1,19 +1,11 @@
 [
     {
-        "merged": "com.example.myapplication.app-debug-53:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.myapplication.app-main-55:/mipmap-hdpi/ic_launcher_round.webp"
-    },
-    {
         "merged": "com.example.myapplication.app-debug-53:/mipmap-anydpi_ic_launcher.xml.flat",
         "source": "com.example.myapplication.app-main-55:/mipmap-anydpi/ic_launcher.xml"
     },
     {
         "merged": "com.example.myapplication.app-debug-53:/mipmap-hdpi_ic_launcher.webp.flat",
         "source": "com.example.myapplication.app-main-55:/mipmap-hdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "com.example.myapplication.app-debug-53:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.myapplication.app-main-55:/drawable/ic_launcher_foreground.xml"
     },
     {
         "merged": "com.example.myapplication.app-debug-53:/drawable_book.png.flat",
@@ -24,8 +16,8 @@
         "source": "com.example.myapplication.app-main-55:/font/nexa.ttf"
     },
     {
-        "merged": "com.example.myapplication.app-debug-53:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-55:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "com.example.myapplication.app-debug-53:/drawable_a.png.flat",
+        "source": "com.example.myapplication.app-main-55:/drawable/a.png"
     },
     {
         "merged": "com.example.myapplication.app-debug-53:/xml_backup_rules.xml.flat",
@@ -34,10 +26,6 @@
     {
         "merged": "com.example.myapplication.app-debug-53:/font_lobster.ttf.flat",
         "source": "com.example.myapplication.app-main-55:/font/lobster.ttf"
-    },
-    {
-        "merged": "com.example.myapplication.app-debug-53:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.myapplication.app-main-55:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
         "merged": "com.example.myapplication.app-debug-53:/layout_activity_main.xml.flat",
@@ -52,12 +40,36 @@
         "source": "com.example.myapplication.app-main-55:/drawable/settings_icon.png"
     },
     {
-        "merged": "com.example.myapplication.app-debug-53:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.myapplication.app-main-55:/mipmap-mdpi/ic_launcher.webp"
-    },
-    {
         "merged": "com.example.myapplication.app-debug-53:/mipmap-anydpi_ic_launcher_round.xml.flat",
         "source": "com.example.myapplication.app-main-55:/mipmap-anydpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-53:/drawable_stats_icon.png.flat",
+        "source": "com.example.myapplication.app-main-55:/drawable/stats_icon.png"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-53:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-55:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-53:/drawable_b.png.flat",
+        "source": "com.example.myapplication.app-main-55:/drawable/b.png"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-53:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.myapplication.app-main-55:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-53:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-55:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-53:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapplication.app-main-55:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-53:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapplication.app-main-55:/mipmap-mdpi/ic_launcher.webp"
     },
     {
         "merged": "com.example.myapplication.app-debug-53:/mipmap-xhdpi_ic_launcher.webp.flat",
@@ -74,10 +86,6 @@
     {
         "merged": "com.example.myapplication.app-debug-53:/mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "com.example.myapplication.app-main-55:/mipmap-xhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.example.myapplication.app-debug-53:/drawable_stats_icon.png.flat",
-        "source": "com.example.myapplication.app-main-55:/drawable/stats_icon.png"
     },
     {
         "merged": "com.example.myapplication.app-debug-53:/drawable_ic_launcher_background.xml.flat",
