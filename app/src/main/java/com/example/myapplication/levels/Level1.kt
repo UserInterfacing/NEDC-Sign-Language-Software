@@ -20,8 +20,6 @@ import androidx.compose.ui.unit.*
 import androidx.navigation.NavController
 import com.example.myapplication.R
 
-var currentLetter = 0
-
 @Composable
 fun LevelOne(navController: NavController) {
     var currentImage by remember { mutableIntStateOf(1) } // Track the current image index
@@ -118,7 +116,6 @@ fun LevelOne(navController: NavController) {
     }
 
     // Monitor translator and trigger animation
-    // Monitor translator and trigger animation
     LaunchedEffect(Unit) {
         while (true) {
             val result = com.example.myapplication.GloveTranslator.translator()
@@ -138,10 +135,6 @@ fun LevelOne(navController: NavController) {
                                 "D" -> "E"
                                 else -> "E" // Stop at "E"
                             }
-                        } else {
-                            // Reset to the first image and letter if you want to loop
-                            currentImage = 1
-                            expectedLetter = "A"
                         }
                     },
                     showFirstImage = { showFirstImage = it },
@@ -169,38 +162,23 @@ private fun triggerAnimationForLetter(
     println("Triggering animation for letter: $letter")
     when (letter) {
         "A" -> {
-            if (currentLetter == 0) {
-                showFirstImage(false)
-                showSecondImage(true)
-                currentLetter = 1
-            }
+            showFirstImage(false)
+            showSecondImage(true)
         }
         "B" -> {
-            if (currentLetter == 1) {
-                showSecondImage(false)
-                showThirdImage(true)
-                currentLetter = 2
-            }
+            showSecondImage(false)
+            showThirdImage(true)
         }
         "C" -> {
-            if (currentLetter == 2) {
-                showThirdImage(false)
-                showFourthImage(true)
-                currentLetter = 3
-            }
+            showThirdImage(false)
+            showFourthImage(true)
         }
         "D" -> {
-            if (currentLetter == 3) {
-                showFourthImage(false)
-                showFifthImage(true)
-                currentLetter = 4
-            }
+            showFourthImage(false)
+            showFifthImage(true)
         }
         "E" -> {
-            if (currentLetter == 4) {
-                showFifthImage(false)
-                showFirstImage(true)
-            }
+            println("success")
         }
     }
     onAnimationComplete()

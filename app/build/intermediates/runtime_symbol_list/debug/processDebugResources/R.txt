@@ -78,6 +78,9 @@ int dimen notification_top_pad_large_text 0x7f030015
 int drawable a 0x7f040001
 int drawable b 0x7f040002
 int drawable book 0x7f040003
+int drawable c 0x7f04001b
+int drawable d 0x7f04001c
+int drawable e 0x7f04001d
 int drawable ic_call_answer 0x7f040004
 int drawable ic_call_answer_low 0x7f040005
 int drawable ic_call_answer_video 0x7f040006

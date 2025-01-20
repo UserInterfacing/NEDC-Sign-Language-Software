@@ -10,6 +10,9 @@ color white
 drawable a
 drawable b
 drawable book
+drawable c
+drawable d
+drawable e
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable settings_icon
