@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.IconButton
@@ -24,7 +25,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.R
+import kotlinx.coroutines.delay
 
 @Composable
 fun LevelOne(navController: NavController) {
@@ -209,6 +212,7 @@ fun LevelOne(navController: NavController) {
             if (result == expectedLetter) {
                 triggerAnimationForLetter(
                     expectedLetter,
+                    navController = navController,
                     onAnimationComplete = {
                         // Update currentImage and expectedLetter only if we haven't reached "E"
                         if (currentImage < images.size) {
@@ -237,6 +241,7 @@ fun LevelOne(navController: NavController) {
 // Function to trigger animations
 private fun triggerAnimationForLetter(
     letter: String,
+    navController: NavController,
     onAnimationComplete: () -> Unit,
     showFirstImage: (Boolean) -> Unit,
     showSecondImage: (Boolean) -> Unit,
@@ -263,7 +268,7 @@ private fun triggerAnimationForLetter(
             showFifthImage(true)
         }
         "E" -> {
-            println("success")
+            navController.navigate("gameScreen1")
         }
     }
     onAnimationComplete()

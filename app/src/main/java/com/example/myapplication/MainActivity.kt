@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import GameScreen
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -74,8 +75,8 @@ fun MyApp(modifier: Modifier = Modifier) {
         composable("stats") { StatsScreen(navController) }
         composable("settings") { SettingsScreen(navController) }
         composable("game") { GameActivity(navController) }
-
         //levels
+        composable("gameScreen1") {GameScreen(navController, 1)}
         composable("level1") { LevelOne(navController) }
     }
 }
