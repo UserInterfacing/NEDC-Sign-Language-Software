@@ -1,9 +1,22 @@
 package com.example.myapplication
 
+import kotlinx.coroutines.delay
+
 object GloveTranslator {
-    fun translator(): String {
-        // Mocked result for testing
-        println("translator() called")
-        return "A" // Replace with actual logic
+    private var counter = 0 // Keeps track of the current state
+
+    suspend fun translator(): String {
+        delay(500) // Wait for 500 milliseconds
+        val result: String = when (counter % 5) {
+            0 -> "A"
+            1 -> "B"
+            2 -> "C"
+            3 -> "D"
+            4 -> "E"
+            else -> "A" // Fallback, though not necessary
+        }
+
+        counter++ // Increment the counter for the next call
+        return result
     }
 }
