@@ -6,7 +6,7 @@ object GloveTranslator {
     private var counter = 0 // Keeps track of the current state
 
     suspend fun translator(): String {
-        delay(500) // Wait for 500 milliseconds
+        delay(5000) // Wait for 500 milliseconds
         val result: String = when (counter % 5) {
             0 -> "A"
             1 -> "B"
