@@ -1,6 +1,5 @@
 package com.example.myapplication
-
-import GameScreen
+import android.bluetooth.BluetoothManager
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -60,7 +59,7 @@ class MainActivity : ComponentActivity() {
 
 object BluetoothManager {
     fun isBluetoothEnabled(context: Context): Boolean {
-        val bluetoothManager = context.getSystemService(Context.BLUETOOTH_SERVICE) as android.bluetooth.BluetoothManager
+        val bluetoothManager = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
         val bluetoothAdapter = bluetoothManager.adapter
         return bluetoothAdapter?.isEnabled == true
     }
@@ -76,7 +75,11 @@ fun MyApp(modifier: Modifier = Modifier) {
         composable("settings") { SettingsScreen(navController) }
         composable("game") { GameActivity(navController) }
         //levels
-        composable("gameScreen1") {GameScreen(navController, 1)}
+        composable("gameScreen1") {
+            GameScreen1(
+                navController = navController,
+            )
+        }
         composable("level1") { LevelOne(navController) }
     }
 }

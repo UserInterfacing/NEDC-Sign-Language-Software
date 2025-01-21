@@ -1,107 +1,128 @@
+package com.example.myapplication.levels
+
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.*
 import androidx.navigation.NavController
 import kotlinx.coroutines.delay
+import kotlin.random.Random
 
 @Composable
-fun GameScreen(navController: NavController, gameId: Int) {
-    var boxes by remember { mutableStateOf(listOf("A", "B", "C", "D", "E")) }
-    var targetBox by remember { mutableStateOf("") }
-    var playerPosition by remember { mutableStateOf("") }
-    var gameMessage by remember { mutableStateOf("Get Ready!") }
+fun GameScreen1(navController: NavController) {
+    val bubbleLetters = listOf("A", "B", "C", "D", "E")
+    var bubbles by remember { mutableStateOf(generateBubbles(bubbleLetters)) }
+
+    // Track difficulty
+    var difficulty by remember { mutableLongStateOf(5000L) } // Initial timer (5 seconds)
+    var gameRunning by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
-        while (true) {
-            // Randomly pick a target box
-            targetBox = boxes.random()
-            boxes = boxes.filter { it != targetBox } // Remove target box
-            gameMessage = "Align your icon with box $targetBox!"
-
-            // Wait for player input (simulate translator)
+        while (gameRunning) {
             val result = com.example.myapplication.GloveTranslator.translator()
-            playerPosition = result
+            println("Translator result: $result")
 
-            // Check collision
-            if (playerPosition == targetBox) {
-                gameMessage = "Success! Box aligned."
-            } else {
-                gameMessage = "Missed! Game Over."
+            // Pop the corresponding bubble
+            bubbles = bubbles.map { bubble ->
+                if (bubble.letter == result) bubble.copy(isPopped = true) else bubble
             }
 
-            // Respawn boxes
-            boxes = listOf("A", "B", "C", "D", "E")
-            delay(2000) // Wait before starting a new round
+            // Remove popped bubbles and add new ones
+            bubbles = bubbles.filterNot { it.isPopped } +
+                    generateBubbles(bubbleLetters - bubbles.map { it.letter })
+
+            delay(100)
         }
     }
 
-    Column(
+    // Game layout
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+            .padding(16.dp)
     ) {
-        Text(
-            text = gameMessage,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.Black,
-            modifier = Modifier.padding(bottom = 16.dp)
-        )
-
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            boxes.forEach { boxLabel ->
-                Box(
-                    modifier = Modifier
-                        .size(100.dp, 50.dp)
-                        .background(if (boxLabel == targetBox) Color.Red else Color.Gray),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(text = boxLabel, color = Color.White, fontSize = 24.sp)
-                }
-            }
-        }
-
-        Spacer(modifier = Modifier.height(50.dp))
-
-        Box(
-            modifier = Modifier
-                .size(100.dp, 50.dp)
-                .background(Color.Blue),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = "Player: $playerPosition",
-                color = Color.White,
-                fontSize = 20.sp
+        bubbles.forEach { bubble ->
+            Bubble(
+                bubble = bubble,
+                onTimeout = { onGameOver(navController) },
+                onPop = { letter ->
+                    bubbles = bubbles.filterNot { it.letter == letter }
+                    bubbles = bubbles + generateBubbles(
+                        bubbleLetters - bubbles.map { it.letter }.toSet()
+                    )
+                    if (bubbles.isEmpty()) difficulty -= 500 // Increase difficulty
+                },
+                difficulty = difficulty
             )
         }
     }
+}
+
+// Data class for a bubble
+data class Bubble(
+    val letter: String,
+    var size: Dp = 50.dp,
+    var timer: Long = 5000L,
+    val isPopped: Boolean = false,
+    val x: Dp = Random.nextInt(0, 300).dp, // Random X position
+    val y: Dp = Random.nextInt(0, 600).dp // Random Y position
+)
+
+// Generate bubbles for available letters
+fun generateBubbles(letters: List<String>): List<Bubble> {
+    return letters.map {
+        Bubble(
+            letter = it,
+            size = Random.nextInt(50, 100).dp,
+            timer = Random.nextLong(3000, 7000), // 3–7 seconds
+            x = Random.nextInt(0, 300).dp, // Random X position
+            y = Random.nextInt(0, 600).dp // Random Y position
+        )
+    }
+}
+
+@Composable
+fun Bubble(
+    bubble: Bubble,
+    onTimeout: () -> Unit,
+    onPop: (String) -> Unit,
+    difficulty: Long
+) {
+    var currentSize by remember { mutableStateOf(bubble.size) }
+    var timeLeft by remember { mutableStateOf(bubble.timer) }
+
+    LaunchedEffect(Unit) {
+        val tickRate = 50L
+        while (timeLeft > 0) {
+            delay(tickRate)
+            timeLeft -= tickRate
+            currentSize += (2.dp / difficulty.toFloat()) // Increase size relative to difficulty
+        }
+        if (timeLeft <= 0) onTimeout()
+    }
+
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .absoluteOffset(x = bubble.x, y = bubble.y) // Position bubble
+            .size(currentSize)
+            .clip(CircleShape)
+            .background(Color.Red)
+            .padding(8.dp)
+    ) {
+        Text(text = bubble.letter, fontSize = 24.sp, color = Color.White)
+        Text(text = "${timeLeft / 1000}s", fontSize = 12.sp, color = Color.Yellow)
+    }
+}
+
+fun onGameOver(navController: NavController) {
+    navController.navigate("game")
 }
