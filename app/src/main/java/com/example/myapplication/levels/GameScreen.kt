@@ -22,7 +22,7 @@ fun GameScreen1(navController: NavController) {
     val bubbleLetters = listOf("A", "B", "C", "D", "E")
     var bubbles by remember { mutableStateOf(generateBubbles(bubbleLetters)) }
     var gameRunning by remember { mutableStateOf(true) }
-    var score by remember { mutableStateOf(0) }
+    var score by remember { mutableIntStateOf(0) }
 
     // Handle game over state
     if (!gameRunning) {
