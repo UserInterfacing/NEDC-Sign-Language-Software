@@ -56,7 +56,7 @@ fun HomeScreen(navController: NavController) {
                 .padding(16.dp),
         ) {
             Button(
-                onClick = {},
+                onClick = {navController.navigate("translator")},
                 modifier = Modifier.size(160.dp, 60.dp),
 
 
