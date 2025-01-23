@@ -82,6 +82,10 @@ drawable book
 drawable c
 drawable d
 drawable e
+drawable f
+drawable g
+drawable h
+drawable i
 drawable ic_call_answer
 drawable ic_call_answer_low
 drawable ic_call_answer_video
@@ -90,6 +94,7 @@ drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable j
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low

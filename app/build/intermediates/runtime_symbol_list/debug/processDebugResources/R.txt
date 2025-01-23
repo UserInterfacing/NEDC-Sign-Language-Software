@@ -81,6 +81,10 @@ int drawable book 0x7f040003
 int drawable c 0x7f040004
 int drawable d 0x7f040005
 int drawable e 0x7f040006
+int drawable f 0x7f04001e
+int drawable g 0x7f04001f
+int drawable h 0x7f040020
+int drawable i 0x7f040021
 int drawable ic_call_answer 0x7f040007
 int drawable ic_call_answer_low 0x7f040008
 int drawable ic_call_answer_video 0x7f040009
@@ -89,6 +93,7 @@ int drawable ic_call_decline 0x7f04000b
 int drawable ic_call_decline_low 0x7f04000c
 int drawable ic_launcher_background 0x7f04000d
 int drawable ic_launcher_foreground 0x7f04000e
+int drawable j 0x7f040022
 int drawable notification_action_background 0x7f04000f
 int drawable notification_bg 0x7f040010
 int drawable notification_bg_low 0x7f040011

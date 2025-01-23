@@ -99,7 +99,7 @@ fun LevelTwo(navController: NavController) {
             ) {
                 Image(
                     painter = painterResource(id = images[0]),
-                    contentDescription = "Image A",
+                    contentDescription = "Image F",
                     modifier = Modifier.size(200.dp)
                 )
             }
@@ -110,7 +110,7 @@ fun LevelTwo(navController: NavController) {
             ) {
                 Image(
                     painter = painterResource(id = images[1]),
-                    contentDescription = "Image B",
+                    contentDescription = "Image G",
                     modifier = Modifier.size(200.dp)
                 )
             }
@@ -121,7 +121,7 @@ fun LevelTwo(navController: NavController) {
             ) {
                 Image(
                     painter = painterResource(id = images[2]),
-                    contentDescription = "Image C",
+                    contentDescription = "Image H",
                     modifier = Modifier.size(200.dp)
                 )
             }
@@ -132,7 +132,7 @@ fun LevelTwo(navController: NavController) {
             ) {
                 Image(
                     painter = painterResource(id = images[3]),
-                    contentDescription = "Image D",
+                    contentDescription = "Image I",
                     modifier = Modifier.size(200.dp)
                 )
             }
@@ -142,7 +142,7 @@ fun LevelTwo(navController: NavController) {
             ) {
                 Image(
                     painter = painterResource(id = images[4]),
-                    contentDescription = "Image E",
+                    contentDescription = "Image J",
                     modifier = Modifier.size(200.dp)
                 )
             }
