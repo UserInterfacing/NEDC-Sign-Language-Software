@@ -115,7 +115,7 @@ fun HomeScreen(navController: NavController) {
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     IconButton(
-                        onClick = { navController.navigate("home") },
+                        onClick = { navController.navigate("home ") },
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.book),
