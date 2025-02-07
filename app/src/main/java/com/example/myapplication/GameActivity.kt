@@ -71,7 +71,7 @@ fun GameActivity(navController: NavController) {
                     },
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.book),
+                        painter = painterResource(id = R.drawable.home2),
                         contentDescription = "Book"
                     )
                 }

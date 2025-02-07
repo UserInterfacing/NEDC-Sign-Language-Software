@@ -182,7 +182,7 @@ fun LevelTwo(navController: NavController) {
                     modifier = Modifier.size(75.dp)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.book),
+                        painter = painterResource(id = R.drawable.home1),
                         contentDescription = "Book",
                     )
                 }

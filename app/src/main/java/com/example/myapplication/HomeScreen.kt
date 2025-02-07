@@ -118,7 +118,7 @@ fun HomeScreen(navController: NavController) {
                         onClick = { navController.navigate("home ") },
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.book),
+                            painter = painterResource(id = R.drawable.home1),
                             contentDescription = "Book"
                         )
                     }
