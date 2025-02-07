@@ -31,19 +31,29 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun HomeScreen(navController: NavController) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFFCFAFA)) // Custom background color
+            .padding(16.dp)
+    )
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(20.dp),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
+
     ) {
+
+        //Spacer(modifier = Modifier.height(.dp))
         Text(
-            text = "NEDC Sign Language Glove",
-            fontSize = 50.sp,
+
+            text = "NEDC APP",
+            fontSize = 35.sp,
             style = TextStyle(
                 fontFamily = FontFamily(
-                    Font(R.font.excelsiorsans, FontWeight.Normal)
+                    Font(R.font.nexa, FontWeight.Normal)
                 ),
                 color = Color.Black
             ),
@@ -59,8 +69,8 @@ fun HomeScreen(navController: NavController) {
                 onClick = {navController.navigate("translator")},
                 modifier = Modifier.size(160.dp, 60.dp),
 
-
-                shape = RoundedCornerShape(5.dp)
+                shape = RoundedCornerShape(5.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF258557))
             ) {
                 Text(text = "TRANSLATOR")
             }
@@ -68,8 +78,8 @@ fun HomeScreen(navController: NavController) {
             Button(
                 onClick = {},
                 modifier = Modifier.size(160.dp, 60.dp),
-                shape = RoundedCornerShape(5.dp)
-
+                shape = RoundedCornerShape(5.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF258557))
             ) {
                 Text(text = "REVIEW")
             }
@@ -79,7 +89,7 @@ fun HomeScreen(navController: NavController) {
             onClick = {navController.navigate("game")},
             modifier = Modifier.size(400.dp, 100.dp),
             shape = RoundedCornerShape(8.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF006400))
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF517156))
         ) {
             Text(
                 text = "LEARN",
@@ -89,6 +99,7 @@ fun HomeScreen(navController: NavController) {
         }
 
         Box {
+
             HorizontalDivider(
                 color = Color.Black,
                 thickness = 2.dp,
