@@ -80,7 +80,7 @@ fun GameActivity(navController: NavController) {
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.stats2),
-                        contentDescription = "Stats"
+                        contentDescription = "Stats" //stats
                     )
                 }
                 IconButton(

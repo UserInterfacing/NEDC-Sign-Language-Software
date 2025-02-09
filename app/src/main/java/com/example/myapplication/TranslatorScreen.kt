@@ -75,4 +75,4 @@ fun TranslatorScreen(navController: NavController) {
 //        )
     }
     Spacer(modifier = Modifier.size(150.dp))
-}
+} //translator

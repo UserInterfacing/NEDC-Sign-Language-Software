@@ -53,7 +53,7 @@ fun StatsScreen(navController: NavController) {
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.settings2),
-                    contentDescription = "Settings"
+                    contentDescription = "Settings" //stats
                 )
             }
         }

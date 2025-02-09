@@ -53,7 +53,7 @@ fun SettingsScreen(navController: NavController) {
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.settings1),
-                    contentDescription = "Settings"
+                    contentDescription = "Settings" //settings
                 )
             }
         }

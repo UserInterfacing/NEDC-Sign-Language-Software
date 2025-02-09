@@ -81,7 +81,7 @@ fun HomeScreen(navController: NavController) {
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.review),
-                    contentDescription = "Review"
+                    contentDescription = "Review" //review
                 )
             }
         }
