@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.*
 import androidx.navigation.NavController
 import kotlinx.coroutines.delay
 import kotlin.random.Random
-//tex
+//te
 @Composable
 fun GameScreen1(navController: NavController) {
     val bubbleLetters = listOf("A", "B", "C", "D", "E")
