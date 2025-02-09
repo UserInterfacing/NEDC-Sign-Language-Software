@@ -44,7 +44,7 @@ fun StatsScreen(navController: NavController) {
                 onClick = { navController.navigate("stats") }
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.stats_icon),
+                    painter = painterResource(id = R.drawable.stats1),
                     contentDescription = "Stats"
                 )
             }
@@ -52,7 +52,7 @@ fun StatsScreen(navController: NavController) {
                 onClick = { navController.navigate("settings") }
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.settings_icon),
+                    painter = painterResource(id = R.drawable.settings2),
                     contentDescription = "Settings"
                 )
             }

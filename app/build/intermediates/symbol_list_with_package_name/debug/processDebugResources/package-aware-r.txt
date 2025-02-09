@@ -97,6 +97,7 @@ drawable ic_call_decline_low
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable j
+drawable learn
 drawable learn_button_background
 drawable notification_action_background
 drawable notification_bg
@@ -111,8 +112,12 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
-drawable settings_icon
-drawable stats_icon
+drawable review
+drawable settings1
+drawable settings2
+drawable stats1
+drawable stats2
+drawable translator
 font excelsiorsans
 font lobster
 font nexa

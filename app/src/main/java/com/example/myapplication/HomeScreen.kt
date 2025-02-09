@@ -65,36 +65,34 @@ fun HomeScreen(navController: NavController) {
 
                 .padding(16.dp),
         ) {
-            Button(
+            IconButton(
                 onClick = {navController.navigate("translator")},
                 modifier = Modifier.size(160.dp, 60.dp),
-
-                shape = RoundedCornerShape(5.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF258557))
             ) {
-                Text(text = "TRANSLATOR")
+                Image(
+                    painter = painterResource(id = R.drawable.translator),
+                    contentDescription = "Translator"
+                )
             }
 
-            Button(
+            IconButton(
                 onClick = {},
                 modifier = Modifier.size(160.dp, 60.dp),
-                shape = RoundedCornerShape(5.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF258557))
             ) {
-                Text(text = "REVIEW")
+                Image(
+                    painter = painterResource(id = R.drawable.review),
+                    contentDescription = "Review"
+                )
             }
         }
 
-        Button(
+        IconButton(
             onClick = {navController.navigate("game")},
             modifier = Modifier.size(400.dp, 100.dp),
-            shape = RoundedCornerShape(8.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF517156))
         ) {
-            Text(
-                text = "LEARN",
-                fontSize = 30.sp,
-                color = Color.Black
+            Image(
+                painter = painterResource(id = R.drawable.learn),
+                contentDescription = "Learn"
             )
         }
 
@@ -126,7 +124,7 @@ fun HomeScreen(navController: NavController) {
                         onClick = { navController.navigate("stats") }
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.stats_icon),
+                            painter = painterResource(id = R.drawable.stats2),
                             contentDescription = "Stats"
                         )
                     }
@@ -134,7 +132,7 @@ fun HomeScreen(navController: NavController) {
                         onClick = { navController.navigate("settings") }
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.settings_icon),
+                            painter = painterResource(id = R.drawable.settings2),
                             contentDescription = "Settings"
                         )
                     }

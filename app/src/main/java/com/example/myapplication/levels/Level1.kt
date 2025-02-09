@@ -177,7 +177,7 @@ fun LevelOne(navController: NavController) {
                     modifier = Modifier.size(75.dp)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.home2),
+                        painter = painterResource(id = R.drawable.home1),
                         contentDescription = "Book",
                     )
                 }
@@ -186,7 +186,7 @@ fun LevelOne(navController: NavController) {
                     modifier = Modifier.size(75.dp)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.stats_icon),
+                        painter = painterResource(id = R.drawable.stats2),
                         contentDescription = "Stats"
                     )
                 }
@@ -195,7 +195,7 @@ fun LevelOne(navController: NavController) {
                     modifier = Modifier.size(75.dp)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.settings_icon),
+                        painter = painterResource(id = R.drawable.settings2),
                         contentDescription = "Settings"
                     )
                 }
