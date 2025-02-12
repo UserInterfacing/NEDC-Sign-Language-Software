@@ -17,7 +17,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -60,40 +63,47 @@ fun HomeScreen(navController: NavController) {
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
 
-        Row(
-            modifier = Modifier.fillMaxWidth()
-
-                .padding(16.dp),
+        Column(
+            modifier = Modifier
+                .padding(30.dp),
         ) {
-            IconButton(
-                onClick = {navController.navigate("translator")},
-                modifier = Modifier.size(160.dp, 60.dp),
+            Box(
+                modifier = Modifier
+                    .size(600.dp, 150.dp)
+                    .clip(RectangleShape)
+                    .clickable { navController.navigate("translator") }
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.translator),
                     contentDescription = "Translator"
                 )
             }
-
-            IconButton(
-                onClick = {},
-                modifier = Modifier.size(160.dp, 60.dp),
+            // Review Button
+            Box(
+                modifier = Modifier
+                    .size(600.dp, 150.dp)
+                    .clip(RectangleShape)
+                    .clickable { /* Add your onClick action here */ }
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.review),
-                    contentDescription = "Review" //review
+                    contentDescription = "Review"
                 )
             }
-        }
 
-        IconButton(
-            onClick = {navController.navigate("game")},
-            modifier = Modifier.size(400.dp, 100.dp),
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.learn),
-                contentDescription = "Learn"
-            )
+// Learn Button
+            Box(
+                modifier = Modifier
+                    .size(600.dp, 150.dp)
+                    .clip(RectangleShape)
+                    .clickable { navController.navigate("game") }
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.learn),
+                    contentDescription = "Learn"
+                )
+            }
+
         }
 
         Box {
