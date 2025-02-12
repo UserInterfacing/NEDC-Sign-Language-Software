@@ -37,7 +37,7 @@ fun TranslatorScreen(navController: NavController) {
             val result = com.example.myapplication.GloveTranslator.translator()
             screenText += "$result " // Update state
         }
-    }
+    }//
 
     Box(
         contentAlignment = Alignment.TopCenter,
