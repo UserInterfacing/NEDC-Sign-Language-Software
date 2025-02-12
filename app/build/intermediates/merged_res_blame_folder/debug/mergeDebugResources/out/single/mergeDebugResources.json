@@ -16,12 +16,12 @@
         "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/drawable_book.png.flat",
-        "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/book.png"
-    },
-    {
         "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/drawable_c.png.flat",
         "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/c.png"
+    },
+    {
+        "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/drawable_book.png.flat",
+        "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/book.png"
     },
     {
         "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/drawable_stats_icon.png.flat",
@@ -76,6 +76,14 @@
         "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/a.png"
     },
     {
+        "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/drawable_stats1.png.flat",
+        "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/stats1.png"
+    },
+    {
+        "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/drawable_translator.png.flat",
+        "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/translator.png"
+    },
+    {
         "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/mipmap-mdpi/ic_launcher_round.webp"
     },
@@ -90,6 +98,10 @@
     {
         "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/drawable_learn.png.flat",
+        "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/learn.png"
     },
     {
         "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/font_nexa.ttf.flat",
@@ -120,6 +132,14 @@
         "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/ic_launcher_foreground.xml"
     },
     {
+        "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/drawable_settings2.png.flat",
+        "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/settings2.png"
+    },
+    {
+        "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/drawable_review.png.flat",
+        "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/review.png"
+    },
+    {
         "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/layout_activity_main.xml.flat",
         "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/layout/activity_main.xml"
     },
@@ -136,8 +156,16 @@
         "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/h.png"
     },
     {
+        "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/drawable_settings1.png.flat",
+        "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/settings1.png"
+    },
+    {
         "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/mipmap-anydpi_ic_launcher.xml.flat",
         "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/mipmap-anydpi/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/drawable_stats2.png.flat",
+        "source": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-main-55:/drawable/stats2.png"
     },
     {
         "merged": "/Users/vivaswancomputer/.gradle/daemon/8.10.2/com.example.myapplication.app-debug-53:/font_lobster.ttf.flat",

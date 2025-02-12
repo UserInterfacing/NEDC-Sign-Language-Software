@@ -83,7 +83,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/stats_icon"
+            android:src="@drawable/stats2"
             android:background="@android:color/transparent"/>
 
         <ImageButton
@@ -91,7 +91,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/settings_icon"
+            android:src="@drawable/settings2"
             android:background="@android:color/transparent"/>
 
     </LinearLayout>

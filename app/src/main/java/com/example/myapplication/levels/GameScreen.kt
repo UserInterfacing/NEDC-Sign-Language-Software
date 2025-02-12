@@ -5,6 +5,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -16,7 +17,7 @@ import androidx.compose.ui.unit.*
 import androidx.navigation.NavController
 import kotlinx.coroutines.delay
 import kotlin.random.Random
-
+//te
 @Composable
 fun GameScreen1(navController: NavController) {
     val bubbleLetters = listOf("A", "B", "C", "D", "E")
@@ -45,6 +46,11 @@ fun GameScreen1(navController: NavController) {
                     fontSize = 32.sp,
                     color = Color.White
                 )
+                Button(
+                    onClick = {navController.navigate("home")}
+                ) {
+                    Text(text = "Home")
+                }
             }
         }
         return

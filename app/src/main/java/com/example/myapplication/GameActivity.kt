@@ -79,15 +79,15 @@ fun GameActivity(navController: NavController) {
                     onClick = { navController.navigate("stats") }
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.stats_icon),
-                        contentDescription = "Stats"
+                        painter = painterResource(id = R.drawable.stats2),
+                        contentDescription = "Stats" //stats
                     )
                 }
                 IconButton(
                     onClick = { navController.navigate("settings") }
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.settings_icon),
+                        painter = painterResource(id = R.drawable.settings2),
                         contentDescription = "Settings"
                     )
                 }

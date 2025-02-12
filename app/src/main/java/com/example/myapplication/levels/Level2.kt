@@ -1,5 +1,5 @@
 package com.example.myapplication.levels
-
+//
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
@@ -191,7 +191,7 @@ fun LevelTwo(navController: NavController) {
                     modifier = Modifier.size(75.dp)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.stats_icon),
+                        painter = painterResource(id = R.drawable.stats2),
                         contentDescription = "Stats"
                     )
                 }
@@ -200,7 +200,7 @@ fun LevelTwo(navController: NavController) {
                     modifier = Modifier.size(75.dp)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.settings_icon),
+                        painter = painterResource(id = R.drawable.settings2),
                         contentDescription = "Settings"
                     )
                 }
