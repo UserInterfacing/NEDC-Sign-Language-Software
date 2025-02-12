@@ -72,7 +72,7 @@ fun TranslatorScreen(navController: NavController) {
 //        VerticalScrollbar(
 //            adapter = ScrollbarAdapter(scrollState),
 //            modifier = Modifier.fillMaxHeight()
-//        )
+//        )//
     }
     Spacer(modifier = Modifier.size(150.dp))
 } //translator
