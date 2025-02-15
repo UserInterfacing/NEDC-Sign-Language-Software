@@ -69,7 +69,7 @@ object BluetoothManager {
 fun MyApp(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "home") {
+    NavHost(navController = navController, startDestination = "translator") {
         composable("home") { HomeScreen(navController) }
         composable("stats") { StatsScreen(navController) }
         composable("settings") { SettingsScreen(navController) }

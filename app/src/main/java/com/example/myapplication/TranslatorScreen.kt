@@ -1,72 +1,118 @@
 package com.example.myapplication
 
+import android.os.Bundle
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.ui.unit.sp
-//import com.google.accompanist.insets.ui.VerticalScrollbar
-//import com.google.accompanist.insets.ui.ScrollbarAdapter
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.delay
 
 @Composable
-fun TranslatorScreen(navController: NavController) {
-    var onTranslatorScreen by remember { mutableStateOf(true) }
-    var screenText by remember { mutableStateOf("") } // Use state for screenText
-    val scrollState = rememberScrollState()
+fun TranslatorScreen(navController: NavController, translatorViewModel: TranslatorViewModel = viewModel()) {
+    var translatedText by remember { mutableStateOf("") }
 
+    // Runs the translation function repeatedly
     LaunchedEffect(Unit) {
-        while (onTranslatorScreen) {
+        while (true) {
             val result = com.example.myapplication.GloveTranslator.translator()
-            screenText += "$result " // Update state
+            translatedText += "$result "
+            delay(1000) // Simulated delay between translations
         }
-    }//
-
-    Box(
-        contentAlignment = Alignment.TopCenter,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(150.dp)
-            .background(Color.Cyan)
-    ) {
-        Column(
-            modifier = Modifier
-                .verticalScroll(scrollState)
-                .fillMaxHeight(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = "Translation:",
-                fontSize = 20.sp
-            )
-            Spacer(modifier = Modifier.height(16.dp)) // Adds space between texts
-            Text(
-                text = screenText,
-                fontSize = 16.sp
-            )
-        }
-
-//        VerticalScrollbar(
-//            adapter = ScrollbarAdapter(scrollState),
-//            modifier = Modifier.fillMaxHeight()
-//        )//
     }
-    Spacer(modifier = Modifier.size(150.dp))
-} //translator
+
+    Column(modifier = Modifier.fillMaxSize()) {
+
+        // Title
+        Text(
+            text = "Translator",
+            fontSize = 24.sp,
+            modifier = Modifier.padding(16.dp)
+                .align(Alignment.CenterHorizontally)
+        )
+
+        Divider(color = Color.Gray, thickness = 1.dp)
+
+        // Translation Box
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .background(Color.Cyan)
+                .padding(16.dp),
+            contentAlignment = Alignment.TopStart
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                Text(text = translatedText, fontSize = 16.sp, color = Color.DarkGray)
+            }
+        }
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        // Bottom Navigation Bar
+        BottomAppBar(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.Transparent),
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                IconButton(
+                    onClick = { navController.navigate("home") },
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.home2),
+                        contentDescription = "Home"
+                    )
+                }
+                IconButton(
+                    onClick = { navController.navigate("stats") }
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.stats2),
+                        contentDescription = "Stats"
+                    )
+                }
+                IconButton(
+                    onClick = { navController.navigate("settings") }
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.settings2),
+                        contentDescription = "Settings"
+                    )
+                }
+            }
+        }
+    }
+}
+
+// ViewModel (Handles State)
+class TranslatorViewModel : ViewModel() {
+    var translatedText by mutableStateOf("")
+        private set
+}
+
+@Preview
+@Composable
+fun PreviewTranslatorScreen() {
+    TranslatorScreen(navController = rememberNavController())
+}
