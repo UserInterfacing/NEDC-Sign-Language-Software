@@ -1,5 +1,7 @@
 package com.example.myapplication
-import android.bluetooth.BluetoothManager
+
+import android.Manifest
+import android.bluetooth.*
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,64 +11,129 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import com.example.myapplication.ui.theme.MyApplicationTheme
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.myapplication.levels.*
-
-/* welcome Sign Languagers
-    BEFORE YOU ADD ANYTHING TO THE CODE:
-
-    1. go to the top left right next to you project where it says "main" or the branch you made
-    2. Click on the right arrow next to main and click "Update" This will make sure your code is up to date before making changes
-    3. Click on the right arrow next to main and click "Checkout" if you see it, otherwise ignore this step
-
-    WHEN YOU DONE WITH THE CODE, do this OTHERWISE YOUR EDITS WONT SAVE:
-    1. On the top there is a tab "Git" at the same place as "File" and "View". Go to Git > New Branch. Enter your name so I know who made the change.
-        a. If there is a red outline and it says branch already exists, select "Overwrite existing branch"
-    2. Next, do the following
-        a. If your on windows: Ctrl + Alt + A
-        b. If your on Mac: Command + Option + A
-    3. Go to Git > Commit. Select All your changes that you want to add. Make a commit message in the textbox below that describing what you did.
-    4. Click on "Commit and Push".
-*/
+import com.example.myapplication.ui.theme.MyApplicationTheme
+import android.bluetooth.le.BluetoothLeScanner
+import android.bluetooth.le.ScanCallback
+import android.bluetooth.le.ScanResult
+import android.content.pm.PackageManager
+import android.util.Log
+import androidx.compose.ui.unit.dp
+import androidx.core.app.ActivityCompat
+import java.util.*
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var bluetoothAdapter: BluetoothAdapter
+    private lateinit var bluetoothManager: BluetoothManager
+    private var bluetoothGatt: BluetoothGatt? = null
+    private var receivedMessage by mutableStateOf("")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        bluetoothManager = getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+        bluetoothAdapter = bluetoothManager.adapter
+
         setContent {
             MyApplicationTheme {
-
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    /*val isBluetoothEnabled = remember { mutableStateOf(BluetoothManager.isBluetoothEnabled(this)) }
-
-                    if (isBluetoothEnabled.value) {
-                        MyApp(modifier = Modifier.padding(innerPadding))
-                    } else {
-                        ConnectToBluetoothScreen {
-                            isBluetoothEnabled.value = BluetoothManager.isBluetoothEnabled(this)
-                        }
-                    }*/
-
-                    MyApp(modifier = Modifier.padding(innerPadding))
+                    MyApp(
+                        modifier = Modifier.padding(innerPadding),
+                        receivedMessage = receivedMessage
+                    )
                 }
             }
+        }
+
+        // Start Bluetooth scanning when the activity is created
+        if (bluetoothAdapter.isEnabled) {
+            startBluetoothScan()
+        }
+    }
+
+    private fun startBluetoothScan() {
+        val bluetoothLeScanner: BluetoothLeScanner = bluetoothAdapter.bluetoothLeScanner
+
+        val scanCallback = object : ScanCallback() {
+            override fun onScanResult(callbackType: Int, result: ScanResult?) {
+                result?.device?.let { device ->
+                    if (ActivityCompat.checkSelfPermission(
+                            this@MainActivity,
+                            Manifest.permission.BLUETOOTH_CONNECT
+                        ) != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        // Handle permission request
+                        return
+                    }
+                    if (device.name == "ESP32-BLE-Serial") { // Replace with actual device name
+                        bluetoothLeScanner.stopScan(this)
+                        device.connectGatt(this@MainActivity, false, gattCallback)
+                    }
+                }
+            }
+        }
+
+        bluetoothLeScanner.startScan(scanCallback)
+    }
+
+    // GATT Callback for BLE connection
+    private val gattCallback = object : BluetoothGattCallback() {
+        override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
+            if (newState == BluetoothProfile.STATE_CONNECTED) {
+                if (ActivityCompat.checkSelfPermission(
+                        this@MainActivity,
+                        Manifest.permission.BLUETOOTH_CONNECT
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    // Handle permission request
+                    return
+                }
+                gatt.discoverServices()
+            }
+        }
+
+        override fun onServicesDiscovered(gatt: BluetoothGatt, status: Int) {
+            val serviceUUID = UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E") // BLESerial Service UUID
+            val characteristicUUID = UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E") // TX Characteristic UUID
+
+            val service = gatt.getService(serviceUUID)
+            val characteristic = service?.getCharacteristic(characteristicUUID)
+
+            if (characteristic != null) {
+                if (ActivityCompat.checkSelfPermission(
+                        this@MainActivity,
+                        Manifest.permission.BLUETOOTH_CONNECT
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    // Handle permission request
+                    return
+                }
+                gatt.setCharacteristicNotification(characteristic, true)
+                val descriptor = characteristic.getDescriptor(UUID.fromString("00002902-0000-1000-8000-00805f9b34fb"))
+                descriptor.value = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE
+                gatt.writeDescriptor(descriptor)
+            }
+        }
+
+        override fun onCharacteristicChanged(
+            gatt: BluetoothGatt,
+            characteristic: BluetoothGattCharacteristic
+        ) {
+            val receivedData = characteristic.value.toString(Charsets.UTF_8)
+            Log.d("BLESerial", "Received: $receivedData")
+
+            // Update the UI with the received data
+            receivedMessage = receivedData // Update the received message state
         }
     }
 }
 
-object BluetoothManager {
-    fun isBluetoothEnabled(context: Context): Boolean {
-        val bluetoothManager = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-        val bluetoothAdapter = bluetoothManager.adapter
-        return bluetoothAdapter?.isEnabled == true
-    }
-}
-
 @Composable
-fun MyApp(modifier: Modifier = Modifier) {
+fun MyApp(modifier: Modifier = Modifier, receivedMessage: String) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "translator") {
@@ -74,13 +141,13 @@ fun MyApp(modifier: Modifier = Modifier) {
         composable("stats") { StatsScreen(navController) }
         composable("settings") { SettingsScreen(navController) }
         composable("game") { GameActivity(navController) }
-        composable("translator") { TranslatorScreen(navController)}
-        //levels
-        composable("gameScreen1") {
-            GameScreen1(
-                navController = navController,
-            )
+        composable("translator") { TranslatorScreen(navController) }
+
+        // Display received message
+        composable("receivedMessage") {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text("Received Data: $receivedMessage")
+            }
         }
-        composable("level1") { LevelOne(navController) }
     }
 }
