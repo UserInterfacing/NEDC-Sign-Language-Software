@@ -22,6 +22,8 @@ import android.content.pm.PackageManager
 import android.util.Log
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
+import com.example.myapplication.levels.GameScreen1
+import com.example.myapplication.levels.LevelOne
 import java.util.*
 
 class MainActivity : ComponentActivity() {
@@ -30,6 +32,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var bluetoothManager: BluetoothManager
     private var bluetoothGatt: BluetoothGatt? = null
     private var receivedMessage by mutableStateOf("")
+    private var currentScreen by mutableStateOf("home")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +46,9 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MyApp(
                         modifier = Modifier.padding(innerPadding),
-                        receivedMessage = receivedMessage
+                        receivedMessage = receivedMessage,
+                        currentScreen = currentScreen,
+                        onChangeScreen = { screen -> currentScreen = screen }
                     )
                 }
             }
@@ -57,7 +62,7 @@ class MainActivity : ComponentActivity() {
 
     private fun startBluetoothScan() {
         val bluetoothLeScanner: BluetoothLeScanner = bluetoothAdapter.bluetoothLeScanner
-
+        println("connected")
         val scanCallback = object : ScanCallback() {
             override fun onScanResult(callbackType: Int, result: ScanResult?) {
                 result?.device?.let { device ->
@@ -69,7 +74,7 @@ class MainActivity : ComponentActivity() {
                         // Handle permission request
                         return
                     }
-                    if (device.name == "ESP32-BLE-Serial") { // Replace with actual device name
+                    if (device.name == "NEDC_GLOVE") { // Replace with actual device name
                         bluetoothLeScanner.stopScan(this)
                         device.connectGatt(this@MainActivity, false, gattCallback)
                     }
@@ -80,6 +85,7 @@ class MainActivity : ComponentActivity() {
         bluetoothLeScanner.startScan(scanCallback)
     }
 
+    // GATT Callback for BLE connection
     // GATT Callback for BLE connection
     private val gattCallback = object : BluetoothGattCallback() {
         override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
@@ -126,28 +132,33 @@ class MainActivity : ComponentActivity() {
             val receivedData = characteristic.value.toString(Charsets.UTF_8)
             Log.d("BLESerial", "Received: $receivedData")
 
+            // Call the translator method with the received data
+            val translatedMessage = GloveTranslator.translator(receivedData)
+
             // Update the UI with the received data
-            receivedMessage = receivedData // Update the received message state
+            receivedMessage = translatedMessage // Update the received message state
+            //currentScreen = "receivedMessage" // Navigate to receivedMessage screen
         }
     }
+
 }
 
 @Composable
-fun MyApp(modifier: Modifier = Modifier, receivedMessage: String) {
+fun MyApp(
+    modifier: Modifier = Modifier,
+    receivedMessage: String,
+    currentScreen: String,
+    onChangeScreen: (String) -> Unit
+) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "translator") {
+    NavHost(navController = navController, startDestination = "home") {
         composable("home") { HomeScreen(navController) }
         composable("stats") { StatsScreen(navController) }
         composable("settings") { SettingsScreen(navController) }
         composable("game") { GameActivity(navController) }
         composable("translator") { TranslatorScreen(navController) }
-
-        // Display received message
-        composable("receivedMessage") {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text("Received Data: $receivedMessage")
-            }
-        }
+        composable("level1") { LevelOne(navController) }
+        composable("gameScreen1") { GameScreen1(navController) }
     }
 }
