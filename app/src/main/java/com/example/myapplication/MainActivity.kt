@@ -19,7 +19,9 @@ import android.bluetooth.le.BluetoothLeScanner
 import android.bluetooth.le.ScanCallback
 import android.bluetooth.le.ScanResult
 import android.content.pm.PackageManager
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import com.example.myapplication.levels.GameScreen1
@@ -60,22 +62,51 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    private val REQUEST_BLUETOOTH_PERMISSION = 1
+
     private fun startBluetoothScan() {
         val bluetoothLeScanner: BluetoothLeScanner = bluetoothAdapter.bluetoothLeScanner
         println("connected")
         val scanCallback = object : ScanCallback() {
             override fun onScanResult(callbackType: Int, result: ScanResult?) {
                 result?.device?.let { device ->
-                    if (ActivityCompat.checkSelfPermission(
-                            this@MainActivity,
-                            Manifest.permission.BLUETOOTH_CONNECT
-                        ) != PackageManager.PERMISSION_GRANTED
-                    ) {
-                        // Handle permission request
-                        return
+                    // Check for BLUETOOTH_SCAN permission on API 31 and above
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                        if (ActivityCompat.checkSelfPermission(
+                                this@MainActivity,
+                                Manifest.permission.BLUETOOTH_SCAN
+                            ) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            println("BLUETOOTH_SCAN permission not granted, requesting...")
+                            ActivityCompat.requestPermissions(
+                                this@MainActivity,
+                                arrayOf(Manifest.permission.BLUETOOTH_SCAN),
+                                REQUEST_BLUETOOTH_PERMISSION
+                            )
+                            return
+                        }
                     }
-                    if (device.name == "NEDC_GLOVE") { // Replace with actual device name
+
+                    println("${device.name} is the name of the device")
+                    if (device.name != null && device.name == "NEDC_GLOVE") {
                         bluetoothLeScanner.stopScan(this)
+
+                        // Before connecting, check for BLUETOOTH_CONNECT permission on API 31+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                            if (ActivityCompat.checkSelfPermission(
+                                    this@MainActivity,
+                                    Manifest.permission.BLUETOOTH_CONNECT
+                                ) != PackageManager.PERMISSION_GRANTED
+                            ) {
+                                println("BLUETOOTH_CONNECT permission not granted, requesting...")
+                                ActivityCompat.requestPermissions(
+                                    this@MainActivity,
+                                    arrayOf(Manifest.permission.BLUETOOTH_CONNECT),
+                                    REQUEST_BLUETOOTH_PERMISSION
+                                )
+                                return
+                            }
+                        }
                         device.connectGatt(this@MainActivity, false, gattCallback)
                     }
                 }
@@ -84,6 +115,7 @@ class MainActivity : ComponentActivity() {
 
         bluetoothLeScanner.startScan(scanCallback)
     }
+
 
     // GATT Callback for BLE connection
     // GATT Callback for BLE connection
@@ -133,10 +165,10 @@ class MainActivity : ComponentActivity() {
             Log.d("BLESerial", "Received: $receivedData")
 
             // Call the translator method with the received data
-            val translatedMessage = GloveTranslator.translator(receivedData)
+            val translatedMessage = GloveTranslator.translator2(receivedData)
 
             // Update the UI with the received data
-            receivedMessage = translatedMessage // Update the received message state
+            receivedMessage = translatedMessage.toString() // Update the received message state
             //currentScreen = "receivedMessage" // Navigate to receivedMessage screen
         }
     }
