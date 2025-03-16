@@ -19,9 +19,7 @@ import android.bluetooth.le.BluetoothLeScanner
 import android.bluetooth.le.ScanCallback
 import android.bluetooth.le.ScanResult
 import android.content.pm.PackageManager
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import com.example.myapplication.levels.GameScreen1
@@ -34,10 +32,11 @@ class MainActivity : ComponentActivity() {
     private lateinit var bluetoothManager: BluetoothManager
     private var bluetoothGatt: BluetoothGatt? = null
     private var receivedMessage by mutableStateOf("")
-    private var currentScreen by mutableStateOf("home")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Initialize SharedPreferences
         enableEdgeToEdge()
 
         bluetoothManager = getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
@@ -48,9 +47,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MyApp(
                         modifier = Modifier.padding(innerPadding),
-                        receivedMessage = receivedMessage,
-                        currentScreen = currentScreen,
-                        onChangeScreen = { screen -> currentScreen = screen }
+                        receivedMessage = receivedMessage
                     )
                 }
             }
@@ -62,51 +59,22 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private val REQUEST_BLUETOOTH_PERMISSION = 1
-
     private fun startBluetoothScan() {
         val bluetoothLeScanner: BluetoothLeScanner = bluetoothAdapter.bluetoothLeScanner
-        println("connected")
+
         val scanCallback = object : ScanCallback() {
             override fun onScanResult(callbackType: Int, result: ScanResult?) {
                 result?.device?.let { device ->
-                    // Check for BLUETOOTH_SCAN permission on API 31 and above
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                        if (ActivityCompat.checkSelfPermission(
-                                this@MainActivity,
-                                Manifest.permission.BLUETOOTH_SCAN
-                            ) != PackageManager.PERMISSION_GRANTED
-                        ) {
-                            println("BLUETOOTH_SCAN permission not granted, requesting...")
-                            ActivityCompat.requestPermissions(
-                                this@MainActivity,
-                                arrayOf(Manifest.permission.BLUETOOTH_SCAN),
-                                REQUEST_BLUETOOTH_PERMISSION
-                            )
-                            return
-                        }
+                    if (ActivityCompat.checkSelfPermission(
+                            this@MainActivity,
+                            Manifest.permission.BLUETOOTH_CONNECT
+                        ) != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        // Handle permission request
+                        return
                     }
-
-                    println("${device.name} is the name of the device")
-                    if (device.name != null && device.name == "NEDC_GLOVE") {
+                    if (device.name == "ESP32-BLE-Serial") { // Replace with actual device name
                         bluetoothLeScanner.stopScan(this)
-
-                        // Before connecting, check for BLUETOOTH_CONNECT permission on API 31+
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                            if (ActivityCompat.checkSelfPermission(
-                                    this@MainActivity,
-                                    Manifest.permission.BLUETOOTH_CONNECT
-                                ) != PackageManager.PERMISSION_GRANTED
-                            ) {
-                                println("BLUETOOTH_CONNECT permission not granted, requesting...")
-                                ActivityCompat.requestPermissions(
-                                    this@MainActivity,
-                                    arrayOf(Manifest.permission.BLUETOOTH_CONNECT),
-                                    REQUEST_BLUETOOTH_PERMISSION
-                                )
-                                return
-                            }
-                        }
                         device.connectGatt(this@MainActivity, false, gattCallback)
                     }
                 }
@@ -116,8 +84,6 @@ class MainActivity : ComponentActivity() {
         bluetoothLeScanner.startScan(scanCallback)
     }
 
-
-    // GATT Callback for BLE connection
     // GATT Callback for BLE connection
     private val gattCallback = object : BluetoothGattCallback() {
         override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
@@ -164,33 +130,31 @@ class MainActivity : ComponentActivity() {
             val receivedData = characteristic.value.toString(Charsets.UTF_8)
             Log.d("BLESerial", "Received: $receivedData")
 
-            // Call the translator method with the received data
-            val translatedMessage = GloveTranslator.translator2(receivedData)
-
             // Update the UI with the received data
-            receivedMessage = translatedMessage.toString() // Update the received message state
-            //currentScreen = "receivedMessage" // Navigate to receivedMessage screen
+            receivedMessage = receivedData // Update the received message state
         }
     }
-
 }
 
 @Composable
-fun MyApp(
-    modifier: Modifier = Modifier,
-    receivedMessage: String,
-    currentScreen: String,
-    onChangeScreen: (String) -> Unit
-) {
+fun MyApp(modifier: Modifier = Modifier, receivedMessage: String) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "home") {
+    NavHost(navController = navController, startDestination = "translator") {
         composable("home") { HomeScreen(navController) }
         composable("stats") { StatsScreen(navController) }
         composable("settings") { SettingsScreen(navController) }
         composable("game") { GameActivity(navController) }
         composable("translator") { TranslatorScreen(navController) }
+
+        // Display received message
+        composable("receivedMessage") {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text("Received Data: $receivedMessage")
+            }
+        }
+
         composable("level1") { LevelOne(navController) }
-        composable("gameScreen1") { GameScreen1(navController) }
+        composable("gameScreen1") { GameScreen1(navController)}
     }
 }

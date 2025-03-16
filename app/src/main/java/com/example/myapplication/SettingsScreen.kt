@@ -99,10 +99,10 @@ fun SettingsScreen(navController: NavController, settingsViewModel: SettingsView
 
 // ViewModel to handle settings state
 class SettingsViewModel : androidx.lifecycle.ViewModel() {
-    var isDarkModeEnabled by mutableStateOf(false)
+    var isDarkModeEnabled by mutableStateOf(true)
         private set
 
-    var areNotificationsEnabled by mutableStateOf(true)
+    var areNotificationsEnabled by mutableStateOf(false)
         private set
 
     fun toggleDarkMode() {

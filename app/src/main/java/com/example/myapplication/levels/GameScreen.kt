@@ -16,12 +16,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
 import androidx.navigation.NavController
 import kotlinx.coroutines.delay
+import kotlin.math.ceil
 import kotlin.random.Random
-//te
+
 @Composable
 fun GameScreen1(navController: NavController) {
-    val bubbleLetters = listOf("A", "B", "C", "D", "E")
-    var bubbles by remember { mutableStateOf(generateBubbles(bubbleLetters)) }
+    var iter by remember { mutableStateOf(1) } // Tracks the iteration of the game
+    var bubbles by remember { mutableStateOf(generateBubbles(ceil(iter / 2.0).toInt())) }
     var gameRunning by remember { mutableStateOf(true) }
     var score by remember { mutableIntStateOf(0) }
 
@@ -47,7 +48,7 @@ fun GameScreen1(navController: NavController) {
                     color = Color.White
                 )
                 Button(
-                    onClick = {navController.navigate("home")}
+                    onClick = { navController.navigate("home") }
                 ) {
                     Text(text = "Home")
                 }
@@ -59,22 +60,27 @@ fun GameScreen1(navController: NavController) {
     // Game logic
     LaunchedEffect(Unit) {
         while (gameRunning) {
-            val result = com.example.myapplication.GloveTranslator.translator()
+            val result = com.example.myapplication.GloveTranslator.translator() // Get input
             println("Translator result: $result")
 
-            // Pop the corresponding bubble
+            // Pop the corresponding bubble if the result matches
             bubbles = bubbles.map { bubble ->
                 if (bubble.letter == result) {
-                    score += 10
+                    score += 10 // Increment the score for a successful pop
                     bubble.copy(isPopped = true)
                 } else bubble
             }
 
-            // Remove popped bubbles
-            bubbles = bubbles.filterNot { it.isPopped } +
-                    generateBubbles(bubbleLetters - bubbles.map { it.letter })
+            // Filter out popped bubbles
+            bubbles = bubbles.filterNot { it.isPopped }
 
-            delay(100)
+            // Check if all bubbles are popped
+            if (bubbles.isEmpty()) {
+                iter += 1 // Increment the iteration
+                bubbles = generateBubbles(ceil(iter / 2.0).toInt()) // Generate new bubbles
+            }
+
+            delay(100) // Game loop delay
         }
     }
 
@@ -88,9 +94,9 @@ fun GameScreen1(navController: NavController) {
             Bubble(
                 bubble = bubble,
                 onTimeout = { gameRunning = false },
-                onPop = { letter ->
+                onPop = {
                     score += 10
-                    bubbles = bubbles.filterNot { it.letter == letter }
+                    bubbles = bubbles.filterNot { it == bubble }
                 }
             )
         }
@@ -106,12 +112,12 @@ data class Bubble(
     val y: Dp = Random.nextInt(0, 600).dp // Random Y position
 )
 
-// Generate bubbles for available letters
-fun generateBubbles(letters: List<String>): List<Bubble> {
-    return letters.map {
+// Generate a specific number of bubbles
+fun generateBubbles(count: Int): List<Bubble> {
+    return List(count) {
         Bubble(
-            letter = it,
-            size = Random.nextInt(50, 100).dp,
+            letter = ('A'..'E').random().toString(), // Letters restricted from A to J
+            size = 100.dp
         )
     }
 }
@@ -125,10 +131,10 @@ fun Bubble(
     var currentSize by remember { mutableStateOf(bubble.size) }
 
     LaunchedEffect(Unit) {
-        val tickRate = 50L
+        val tickRate = 50L // Milliseconds per shrink step
         while (currentSize > 0.dp) {
             delay(tickRate)
-            currentSize -= 1.dp // Shrink the bubble
+            currentSize -= 0.5.dp // Shrink the bubble slowly
         }
         if (currentSize <= 0.dp) {
             onTimeout() // Trigger game over

@@ -60,7 +60,7 @@ fun TranslatorScreen(navController: NavController, translatorViewModel: Translat
                     .fillMaxHeight()
                     .verticalScroll(rememberScrollState())
             ) {
-                Text(text = translatedText, fontSize = 16.sp, color = Color.DarkGray)
+                Text(text = translatedText, fontSize = 20.sp, color = Color.DarkGray)
             }
         }
 
