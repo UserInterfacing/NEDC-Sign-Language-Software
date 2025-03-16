@@ -62,7 +62,7 @@ fun GameScreen1(navController: NavController) {
         while (gameRunning) {
             val result = com.example.myapplication.GloveTranslator.translator() // Get input
             println("Translator result: $result")
-
+//
             // Pop the corresponding bubble if the result matches
             bubbles = bubbles.map { bubble ->
                 if (bubble.letter == result) {

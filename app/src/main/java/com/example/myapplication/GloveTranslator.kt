@@ -1,7 +1,7 @@
 package com.example.myapplication
 
 import kotlinx.coroutines.*
-
+//
 object GloveTranslator {
     private var counter = 0 // Keeps track of the current state
 

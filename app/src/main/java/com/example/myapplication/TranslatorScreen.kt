@@ -27,13 +27,13 @@ fun TranslatorScreen(navController: NavController, translatorViewModel: Translat
 
     // Runs the translation function repeatedly
     LaunchedEffect(Unit) {
-        while (true) {
+        while (true) {//
             val result = com.example.myapplication.GloveTranslator.translator()
             translatedText += "$result "
             delay(1000) // Simulated delay between translations
         }
     }
-
+//
     Column(modifier = Modifier.fillMaxSize()) {
 
         // Title

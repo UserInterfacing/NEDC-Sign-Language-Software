@@ -266,7 +266,7 @@ private fun triggerAnimationForLetter(
         "D" -> {
             showFourthImage(false)
             showFifthImage(true)
-        }
+        }//
         "E" -> {
             navController.navigate("gameScreen1")
         }
